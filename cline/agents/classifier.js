@@ -1,6 +1,6 @@
 /**
  * Classifier Agent
- * 
+ *
  * Analyzes jewelry images to identify materials, style, and other attributes.
  */
 
@@ -14,72 +14,72 @@ class Classifier {
     this.imageAnalysis = new ImageAnalysis();
     this.knowledgeBase = new KnowledgeBase();
   }
-  
+
   /**
    * Classify groups of images into jewelry products with attributes
    * @param {Array} productGroups Groups of related images
    * @returns {Array} Classified products with attributes
    */
   async classifyGroups(productGroups) {
-    this.logger.info(Classifying  product groups);
-    
+    this.logger.info('Classifying product groups');
+
     // Load reference data from memory bank
     const materials = await this.knowledgeBase.getFile('knowledge/materials/gemstones.md');
     const metals = await this.knowledgeBase.getFile('knowledge/materials/metals.md');
     const vintageMarkers = await this.knowledgeBase.getFile('knowledge/materials/vintage-markers.md');
     const brands = await this.knowledgeBase.getFile('knowledge/brands/luxury-brands.md');
-    
+
     const classifiedProducts = [];
-    
+
     for (const group of productGroups) {
       try {
         // Extract detailed visual features from primary image
         const primaryImage = group.primaryImage || group.images[0];
         const features = await this.imageAnalysis.extractDetailedFeatures(primaryImage);
-        
+
         // Use supporting images for additional context
         const supportingImages = group.images.filter(img => img !== primaryImage);
         const supportingFeatures = await Promise.all(
           supportingImages.map(img => this.imageAnalysis.extractFeatures(img))
         );
-        
+
         // Classify jewelry type and category
         const typeCategory = await this.classifyJewelryType(features, supportingFeatures);
-        
+
         // Identify materials
         const materialInfo = await this.identifyMaterials(
-          features, 
+          features,
           supportingFeatures,
           { materials, metals }
         );
-        
+
         // Assess age and style
         const ageStyle = await this.assessAgeAndStyle(
-          features, 
+          features,
           supportingFeatures,
           { vintageMarkers }
         );
-        
+
         // Identify brand or maker
         const brandInfo = await this.identifyBrand(
-          features, 
+          features,
           supportingFeatures,
           { brands }
         );
-        
+
         // Assess condition
         const condition = await this.assessCondition(features, supportingFeatures);
-        
+
         // Measure dimensions
         const dimensions = await this.measureDimensions(features, typeCategory.type);
-        
+
         // Assess quality indicators
         const qualityIndicators = await this.assessQuality(
-          features, 
-          materialInfo, 
+          features,
+          materialInfo,
           typeCategory.type
         );
-        
+
         // Combine all classification results
         classifiedProducts.push({
           ...group,
@@ -101,7 +101,7 @@ class Classifier {
           })
         });
       } catch (error) {
-        this.logger.error(Failed to classify product group: );
+        this.logger.error('Failed to classify product group:', error);
         // Add with minimal classification
         classifiedProducts.push({
           ...group,
@@ -113,10 +113,10 @@ class Classifier {
         });
       }
     }
-    
+
     return classifiedProducts;
   }
-  
+
   // Implementation of all the classification methods would go here...
   // For brevity, I'll skip the implementation details of these methods
   async classifyJewelryType(features, supportingFeatures) {}

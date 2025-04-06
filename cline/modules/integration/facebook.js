@@ -1,6 +1,6 @@
 /**
  * Facebook Integration Module
- * 
+ *
  * Manages listings on Facebook Marketplace.
  */
 
@@ -12,7 +12,7 @@ class FacebookListing {
     this.logger = new Logger('facebook-listing');
     this.config = platformConfig.facebook;
   }
-  
+
   /**
    * Create a listing on Facebook Marketplace
    * @param {Object} product Product data
@@ -21,11 +21,11 @@ class FacebookListing {
   async createListing(product) {
     // Implementation would use Facebook API
     // This is a placeholder implementation
-    return {
-      id: b-,
-      url: https://facebook.com/marketplace/item/,
-      status: 'active'
-    };
+return {
+  id: 'fb-' + Date.now(),
+  url: 'https://facebook.com/marketplace/item/',
+  status: 'active'
+};
   }
 }
 

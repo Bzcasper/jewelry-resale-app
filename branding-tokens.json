@@ -1,0 +1,41 @@
+{
+  "colors": {
+    "background": "#F8F5F0",
+    "accentGold": "#D4AF37",
+    "primaryText": "#2E2E2E",
+    "accentBold": "#800020",
+    "secondaryBackground": "#EDEDED",
+    "errorAlert": "#FFB6C1"
+  },
+  "typography": {
+    "headline": {
+      "fontFamily": "Playfair Display, serif",
+      "fontWeight": "normal"
+    },
+    "body": {
+      "fontFamily": "Lato, Inter, sans-serif",
+      "fontWeight": "normal"
+    },
+    "lineHeight": {
+      "headline": "1.5",
+      "body": "1.6"
+    }
+  },
+  "spacing": {
+    "padding": "1.5rem",
+    "marginTop": "3rem"
+  },
+  "borderRadius": {
+    "rounded2xl": "1rem"
+  },
+  "shadows": {
+    "md": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+  },
+  "animations": {
+    "fadeIn": "fadeIn 0.5s ease-in-out",
+    "scrollReveal": "scrollReveal 1s ease-in-out",
+    "softLift": "softLift 0.3s ease-in-out",
+    "glide": "glide 0.3s ease-in-out",
+    "shimmer": "shimmer 1s linear infinite"
+  }
+}

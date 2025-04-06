@@ -1,6 +1,6 @@
 /**
  * eBay Integration Module
- * 
+ *
  * Manages listings on eBay marketplace.
  */
 
@@ -12,7 +12,7 @@ class EbayListing {
     this.logger = new Logger('ebay-listing');
     this.config = platformConfig.ebay;
   }
-  
+
   /**
    * Create a listing on eBay
    * @param {Object} product Product data
@@ -21,11 +21,11 @@ class EbayListing {
   async createListing(product) {
     // Implementation would use eBay API
     // This is a placeholder implementation
-    return {
-      id: ebay-,
-      url: https://ebay.com/itm/,
-      status: 'active'
-    };
+return {
+  id: 'ebay-' + Date.now(),
+  url: 'https://ebay.com/itm/',
+  status: 'active'
+};
   }
 }
 

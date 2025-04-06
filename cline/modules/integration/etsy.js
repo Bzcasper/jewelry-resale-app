@@ -1,6 +1,6 @@
 /**
  * Etsy Integration Module
- * 
+ *
  * Manages listings on Etsy marketplace.
  */
 
@@ -12,7 +12,7 @@ class EtsyListing {
     this.logger = new Logger('etsy-listing');
     this.config = platformConfig.etsy;
   }
-  
+
   /**
    * Create a listing on Etsy
    * @param {Object} product Product data
@@ -21,11 +21,11 @@ class EtsyListing {
   async createListing(product) {
     // Implementation would use Etsy API
     // This is a placeholder implementation
-    return {
-      id: etsy-,
-      url: https://etsy.com/listing/,
-      status: 'active'
-    };
+return {
+  id: 'etsy-' + Date.now(),
+  url: 'https://etsy.com/listing/',
+  status: 'active'
+};
   }
 }
 

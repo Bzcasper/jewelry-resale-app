@@ -1,6 +1,6 @@
 /**
  * Description Generator Module
- * 
+ *
  * Creates product descriptions based on classification data.
  */
 
@@ -11,7 +11,7 @@ class DescriptionGenerator {
   constructor() {
     this.logger = new Logger('description-generator');
   }
-  
+
   /**
    * Generate product description
    * @param {Object} product Product data
@@ -21,7 +21,7 @@ class DescriptionGenerator {
   async generateDescription(product, resources) {
     // Implementation would use templates and product data
     // This is a placeholder implementation
-    return Beautiful  .;
+    return 'Beautiful ' + product.name + '.';
   }
 }
 

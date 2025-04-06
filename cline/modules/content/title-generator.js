@@ -1,6 +1,6 @@
 /**
  * Title Generator Module
- * 
+ *
  * Creates product titles based on classification data.
  */
 
@@ -11,7 +11,7 @@ class TitleGenerator {
   constructor() {
     this.logger = new Logger('title-generator');
   }
-  
+
   /**
    * Generate product title
    * @param {Object} product Product data
@@ -21,7 +21,7 @@ class TitleGenerator {
   async generateTitle(product, resources) {
     // Implementation would use templates and product data
     // This is a placeholder implementation
-    return ${product.materials?.primary || 'Jewelry'} ;
+    return `${product.materials?.primary || 'Jewelry'} Title`;
   }
 }
 

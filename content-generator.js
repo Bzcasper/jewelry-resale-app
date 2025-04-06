@@ -1,15 +1,15 @@
 /**
  * Content Generator Agent
- * 
+ *
  * Creates product titles, descriptions, and pricing for jewelry items.
  */
 
-import { Logger } from '../utils/logger';
-import { KnowledgeBase } from '../modules/memory/knowledge-base';
-import { TitleGenerator } from '../modules/content/title-generator';
-import { DescriptionGenerator } from '../modules/content/description-gen';
-import { Pricing } from '../modules/content/pricing';
-import { templates } from '../config/content-templates';
+import { Logger } from './cline/utils/logger';
+import { KnowledgeBase } from './cline/modules/memory/knowledge-base';
+import { TitleGenerator } from './cline/modules/content/title-generator';
+import { DescriptionGenerator } from './cline/modules/content/description-gen';
+import { Pricing } from './cline/modules/content/pricing';
+import { templates } from './cline/config/content-templates';
 
 class ContentGenerator {
   constructor() {
@@ -19,7 +19,7 @@ class ContentGenerator {
     this.descriptionGenerator = new DescriptionGenerator();
     this.pricing = new Pricing();
   }
-  
+
   /**
    * Generate content for classified products
    * @param {Array} classifiedProducts Products with classifications
@@ -27,15 +27,15 @@ class ContentGenerator {
    */
   async generateContent(classifiedProducts) {
     this.logger.info(Generating content for  products);
-    
+
     // Load reference data from memory bank
     const keywords = await this.knowledgeBase.getFile('knowledge/listing/keywords.md');
     const listingTemplates = await this.knowledgeBase.getFile('knowledge/listing/templates.md');
     const marketTrends = await this.knowledgeBase.getFile('knowledge/pricing/market-trends.md');
     const salesHistory = await this.knowledgeBase.getFile('knowledge/pricing/historical-sales.md');
-    
+
     const productsWithContent = [];
-    
+
     for (const product of classifiedProducts) {
       try {
         // Skip products that need manual review, if configured to do so
@@ -46,38 +46,38 @@ class ContentGenerator {
           });
           continue;
         }
-        
+
         // Generate product title
         const title = await this.titleGenerator.generateTitle(
           product,
           { keywords }
         );
-        
+
         // Generate product description
         const description = await this.descriptionGenerator.generateDescription(
           product,
           { templates: listingTemplates }
         );
-        
+
         // Generate platform-specific descriptions
         const platformDescriptions = await this.generatePlatformDescriptions(
           product,
           description,
           { templates: listingTemplates }
         );
-        
+
         // Determine pricing
         const pricing = await this.pricing.calculatePrice(
           product,
           { marketTrends, salesHistory }
         );
-        
+
         // Create SEO tags and keywords
         const seoKeywords = await this.generateSEOKeywords(
           product,
           { keywords }
         );
-        
+
         // Combine all generated content
         productsWithContent.push({
           ...product,
@@ -104,10 +104,10 @@ class ContentGenerator {
         });
       }
     }
-    
+
     return productsWithContent;
   }
-  
+
   // Implementation of other methods would go here...
   // For brevity, I'll skip the implementation details
   async generatePlatformDescriptions(product, baseDescription, resources) {}

@@ -1,0 +1,9 @@
+
+project_id = "qflapwllxftcsdukoals"
+
+[functions.analyze-jewelry]
+verify_jwt = true
+
+[functions.sync-to-marketplace]
+verify_jwt = true
+

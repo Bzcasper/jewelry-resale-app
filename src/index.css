@@ -1,0 +1,95 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 43 38% 96%;
+    --foreground: 20 14% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 4%;
+
+    --primary: 43 76% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 350 75% 25%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 40 30% 96%;
+    --muted-foreground: 237 13% 40%;
+
+    --accent: 40 24% 90%;
+    --accent-foreground: 20 14% 4%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 40 13% 86%;
+    --input: 40 13% 86%;
+    --ring: 43 76% 52%;
+
+    --radius: 0.5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline;
+  }
+}
+
+@layer components {
+  .gold-gradient {
+    @apply bg-gradient-to-r from-[#D4AF37] via-[#F2E28C] to-[#D4AF37] text-transparent bg-clip-text;
+  }
+
+  .elegant-card {
+    @apply bg-white rounded-lg shadow-md border border-[#E8E0D0] transition-all duration-300 hover:shadow-lg;
+  }
+
+  .elegant-button {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300;
+  }
+
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+
+  .hover-shine {
+    @apply relative overflow-hidden before:absolute before:top-0 before:left-[-75%] before:z-[2] before:block before:w-1/2 before:h-full before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:transform before:rotate-30 before:skew-x-[-25deg] before:transition-all before:duration-700 hover:before:animate-shine;
+  }
+
+  @keyframes shine {
+    100% {
+      left: 125%;
+    }
+  }
+
+  .animate-shine {
+    animation: shine 0.85s;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
